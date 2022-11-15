@@ -1,0 +1,21 @@
+.cajaProductList{
+    color: #219ebc;
+    border: 2px dotted #219ebc;
+}
+
+.cajaHeader{
+    color: #e63946;
+    border: 2px dotted #e63946;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.cajaProduct{
+    color: #6a994e;
+    border: 2px dotted #6a994e;
+}
+
+.cajaHeader, .cajaProduct, .cajaProductList{
+    padding: 20px;
+    font-size: 2rem;
+}

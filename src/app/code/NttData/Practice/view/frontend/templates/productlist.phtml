@@ -1,0 +1,16 @@
+<!-- <h2>Volviste para renegar de nuevo???</h2>
+<hr>
+/* $ids = [1,2,3];
+$categoryProducts = $block->getProductCollectionByCategories($ids);
+foreach ($categoryProducts as $product) {
+    echo $product->getId() .'-'.$product->getName().'-'.$product->getProductUrl().'<br />';
+} -->
+
+<?php 
+/**
+* @var \NttData\Practice\Block\Test $block
+*/
+    $productList = $block->getInfoClass();
+?>
+<div class="cajaProductList">
+    <?= $productList ?>
