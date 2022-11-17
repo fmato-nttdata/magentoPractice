@@ -27,17 +27,3 @@ class ProductList extends \Magento\Framework\App\Action\Action{
 		return $this->pageFactory;
 	}
 }
-
-
-/* date_default_timezone_set('America/New_York'); //ANCHOR: Horario default
-//ANCHOR: instanciar storeManager
-$objectManager =  \Magento\Framework\App\ObjectManager::getInstance();        
-$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
-$idStore = $storeManager->getStore()->getStoreId();
-if ($idStore == 2) {
-	date_default_timezone_set('America/Argentina/Buenos_Aires');
-}
-$date = date('h:s:i');
-$this->pageFactory = $this->_pageFactory->create();
-$this->pageFactory->getConfig()->getTitle()->set(__('Request A Quote %1',$date));
-return $this->pageFactory; */
