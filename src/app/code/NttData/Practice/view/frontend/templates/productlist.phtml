@@ -12,5 +12,10 @@ foreach ($categoryProducts as $product) {
 */
     $productList = $block->getInfoClass();
 ?>
+<span>
+    <?php echo __('Hello my friend, welcome to hell!!! hahaha'). '<br/>';?>
+    <?php echo $block->getStoreCountry() . '<br/>';?>
+</span>
 <div class="cajaProductList">
     <?= $productList ?>
+
