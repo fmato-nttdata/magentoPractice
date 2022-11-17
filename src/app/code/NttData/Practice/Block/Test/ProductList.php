@@ -5,6 +5,7 @@ class ProductList extends \Magento\Framework\View\Element\Template{
      * @var \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
      */
     protected $_productCollectionFactory;
+    protected $_storeManager;
 
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,        
@@ -25,6 +26,8 @@ class ProductList extends \Magento\Framework\View\Element\Template{
         $collection->setCurPage(1);
         return $collection;
     }
+
+    //**********************************************************************************************
 
     public function getInfoClass(){
         $dato = get_class($this);
