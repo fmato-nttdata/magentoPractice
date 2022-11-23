@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="practice_section" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Section practice ntt</label>
+            <tab>catalog</tab>
+            <resource>NttData_Practice::config</resource>
+            <group id="practice_group" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Group practice ntt</label>
+                <field id="pracFi_enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable module?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Habilita el modulo</comment>
+                </field>
+                <field id="pracFi_number" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Limit products</label>
+                    <comment>limite de productos a mostrar</comment>
+                </field>
+                <field id="pracFi_attributte" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product atributes</label>
+                    <comment>atributo del producto que debe mostrar dicha lista</comment>
+                    <source_model>NttData\Practice\Model\Config\Source\AtributteProducts</source_model>
+                </field>
+                <field id="pracFi_order" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>List Order</label>
+                    <comment>listar ordenado de manera ascendente o descendente</comment>
+                    <source_model>NttData\Practice\Model\Config\Source\OrderDirection</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

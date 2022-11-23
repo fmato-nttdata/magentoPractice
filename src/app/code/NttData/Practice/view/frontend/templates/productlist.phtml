@@ -1,20 +1,36 @@
-<!-- <h2>Volviste para renegar de nuevo???</h2>
-<hr>
-/* $ids = [1,2,3];
-$categoryProducts = $block->getProductCollectionByCategories($ids);
-foreach ($categoryProducts as $product) {
-    echo $product->getId() .'-'.$product->getName().'-'.$product->getProductUrl().'<br />';
-} -->
-
 <?php 
 /**
 * @var \NttData\Practice\Block\Test $block
 */
-    $productList = $block->getInfoClass();
 ?>
-<span>
-    <?php echo $block->getStoreCountry() . '<br/>';?>
-</span>
 <div class="cajaProductList">
-    <?= $productList ?>
+    <?= $block->getInfoClass() ?>
+<hr>
 
+<?php
+    $ids = [1,2,3];
+    $categoryProducts = $block->getProductCollectionByCategories($ids);
+?>
+
+<?php if($block->isEnabled()):?>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>URL Path</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($categoryProducts as $product):?>
+                <tr>
+                    <td><?= $product->getId() ?></td>
+                    <td><?= $product->getName() ?></td>
+                    <td><?= $product->getDescription()?></td>
+                    <td><?= $product->getProductUrl() ?></td>
+                </tr>
+            <?php endforeach;?>
+        </tbody>
+    </table>
+<?php endif;?>
