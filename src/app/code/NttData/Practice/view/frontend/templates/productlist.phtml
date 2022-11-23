@@ -12,6 +12,11 @@
     $categoryProducts = $block->getProductCollectionByCategories($ids);
 ?>
 
+<?php if($block -> isEnabled()): ?>
+    <span>Settingf on</span>
+<?php else:?>
+    <span>Settings off</span>
+<?php endif;?>
 <?php if($block->isEnabled()):?>
     <table>
         <thead>
