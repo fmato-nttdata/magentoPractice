@@ -17,7 +17,7 @@ class ProductList extends \Magento\Framework\App\Action\Action{
 
 	public function execute(){
 		$idStore = $this->_storeManager->getStore()->getId();
-		date_default_timezone_set('America/New_York');
+		date_default_timezone_set('America/New_York'); //ANCHOR: Horario default
         if ($idStore == 2) {
             date_default_timezone_set('America/Argentina/Buenos_Aires');
         }
