@@ -1,0 +1,145 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">employees_add.employees_add_data_source</item>
+            <item name="deps" xsi:type="string">employees_add.employees_add_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Form Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">employees_add</item>
+        </item>
+        <item name="spinner" xsi:type="string">employees</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">NttData\Grid\Block\Adminhtml\Button\Back</item>
+            <item name="reset" xsi:type="string">NttData\Grid\Block\Adminhtml\Button\Reset</item>
+            <item name="save" xsi:type="string">NttData\Grid\Block\Adminhtml\Button\Save</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+
+    <dataSource name="employees_add_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">NttData\Grid\Ui\DataProvider\EmployeesDataProvider</argument>
+            <argument name="name" xsi:type="string">employees_add_data_source</argument>
+
+            <!-- NOTE: must be the same with which it is in tha database table -->
+            <argument name="primaryFieldName" xsi:type="string">id_employees</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="*/*/save" />
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+
+    <fieldset name="employees"><!-- name table databases -->
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">Data needed</item>
+                <item name="sortOrder" xsi:type="number">10</item>
+            </item>
+        </argument>
+        <field name="emes_name"><!-- FIXME -->
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Name employees</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">emes_name</item><!-- FIXME -->
+                    <item name="dataScope" xsi:type="string">emes_name</item><!-- FIXME -->
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="emes_surname"><!-- FIXME -->
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Surname employees</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">emes_surname</item><!-- FIXME -->
+                    <item name="dataScope" xsi:type="string">emes_surname</item><!-- FIXME -->
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="emes_age">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Age employees</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">emes_age</item><!-- FIXME -->
+                    <item name="dataScope" xsi:type="string">emes_age</item><!-- FIXME -->
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-digits" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <!-- FIXME: select which decides the type of employee and which will show options according to their area-->
+        <field name="emes_typeEmployees" formElement="select">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Type of employees</label>
+                <dataScope>emes_typeEmployees</dataScope><!-- FIXME -->
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="NttData\Grid\Model\Config\Source\TypeEmployees"></options>
+                        <caption translate="true">-- Please Select --</caption>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+
+        <!-- FIXME: data extracted form the table designer -->
+        <field name="emes_typeDesigner" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">NttData\Grid\Model\Config\Source\Designer</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Type designer</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="dataScope" xsi:type="string">emes_typeDesigner</item>
+                    <item name="default" xsi:type="string">-1</item>
+                </item>
+            </argument>
+        </field>
+
+        <!-- FIXME: data extracted form the table programmer -->
+        <field name="emes_typeProgrammer" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">NttData\Grid\Model\Config\Source\Programmer</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Type programmer</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="dataScope" xsi:type="string">emes_typeProgrammer</item>
+                    <item name="default" xsi:type="string">-1</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>
+

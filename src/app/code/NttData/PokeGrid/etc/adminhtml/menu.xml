@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="NttData_PokeGrid::menu"
+            title="Menu Pokemon"
+            module="NttData_PokeGrid"
+            sortOrder="10"
+            resource="Magento_Backend::content"
+        />
+        <add id="NttData_PokeGrid::pokemon"
+            title="Grid Pokemon"
+            module="NttData_PokeGrid"
+            sortOrder="1"
+            action="nttdata_poke/index/index"
+            parent="NttData_PokeGrid::menu"
+            resource="Magento_Backend::content"
+        />
+    </menu>
+</config>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="pokemon" resource="default" engine="innodb" comment="Pokemon grid">
+        <column xsi:type="smallint" name="id" padding="6" unsigned="false" nullable="false" identity="true" comment="ID" />
+        <column xsi:type="varchar" name="name_pokemon" nullable="false" length="255" comment="Name of pokemon" />
+        <column xsi:type="varchar" name="type" nullable="false" length="255" comment="Type of pokemon" />
+        <column xsi:type="varchar" name="generation" nullable="false" length="255" comment="Type generation of pokemon"/>
+        <column xsi:type="varchar" name="region" nullable="false" length="255" comment="Name region of pokemon"/>
+        <!-- NOTE: primary key -->
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

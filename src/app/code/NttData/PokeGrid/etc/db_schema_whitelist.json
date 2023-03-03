@@ -1,0 +1,17 @@
+{
+    "pokemon": {
+        "column": {
+            "id": true,
+            "name": true,
+            "type": true,
+            "generation": true,
+            "name_region": true,
+            "aggregate": true,
+            "region": true,
+            "name_pokemon": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

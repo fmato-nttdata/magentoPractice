@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+    <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Ui/etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+        <item name="provider" xsi:type="string">nttdata_poke_index_list.nttdata_poke_index_list_data_source</item>
+        <item name="deps" xsi:type="string">nttdata_poke_index_list.nttdata_poke_index_list_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">pokemon</item> <!-- NOTE: name de table de database -->
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">nttdata_poke/index/add</item> <!-- NOTE: module/controller/action -->
+            </item>
+        </item>
+    </argument>
+    <dataSource name="nttdata_poke_index_list_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+        <argument name="class" xsi:type="string">
+            NttData\PokeGrid\Ui\DataProvider\PokemonDataProvider
+        </argument>
+        <argument name="name" xsi:type="string">nttdata_poke_index_list_data_source</argument>
+        <argument name="primaryFieldName" xsi:type="string">id</argument>
+        <argument name="requestFieldName" xsi:type="string">id</argument>
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+            <item name="update_url" xsi:type="url" path="mui/index/render"/>
+            </item>
+        </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+        </item>
+        </argument>
+    </dataSource>
+    <container name="listing_top">
+        <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+            <item name="template" xsi:type="string">ui/grid/toolbar</item>
+            <item name="stickyTmpl" xsi:type="string">ui/grid/sticky/toolbar</item>
+        </item>
+        </argument>
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+            <item name="storageConfig" xsi:type="array">
+                <item name="indexField" xsi:type="string">id</item>
+                <item name="provider" xsi:type="string">
+                nttdata_poke_index_list.nttdata_poke_index_list.listing_top.bookmarks
+                </item>
+                <item name="namespace" xsi:type="string">current.filters</item>
+            </item>
+            <item name="childDefaults" xsi:type="array">
+                <item name="provider" xsi:type="string">
+                nttdata_poke_index_list.nttdata_poke_index_list.listing_top.listing_filters
+                </item>
+                <item name="imports" xsi:type="array">
+                <item name="visible" xsi:type="string">
+                    nttdata_poke_index_list.nttdata_poke_index_list.nttdata_pokegrid_index_list_columns.${ $.index }:visible
+                </item>
+                </item>
+            </item>
+            </item>
+        </argument>
+        </filters>
+        <paging name="listing_paging">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                <item name="storageConfig" xsi:type="array">
+                    <item name="provider" xsi:type="string">
+                    nttdata_poke_index_list.nttdata_poke_index_list.listing_top.bookmarks
+                    </item>
+                    <item name="namespace" xsi:type="string">current.paging</item>
+                </item>
+                <item name="selectProvider" xsi:type="string">
+                    nttdata_poke_index_list.nttdata_poke_index_list.nttdata_pokegrid_index_list_columns.ids
+                </item>
+                </item>
+            </argument>
+        </paging>
+    </container>
+    <columns name="pokemon"> <!-- NOTE: use the same name as the table-->
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </selectionsColumn>
+        <column name="id"> <!-- NOTE: use the same column name-->
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">ID</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </column>
+        <column name="name_pokemon">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                </item>
+            </argument>
+        </column>
+        <column name="type">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string">Pokemon type</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                </item>
+            </argument>
+        </column>
+        <column name="generation">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string">Pokemon generation</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                </item>
+            </argument>
+        </column>
+        <column name="region">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string">Name region</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+                </item>
+            </argument>
+        </column>
+    </columns>
+    </listing>
