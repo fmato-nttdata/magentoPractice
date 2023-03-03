@@ -1,0 +1,41 @@
+{
+    "employees": {
+        "column": {
+            "id": true,
+            "emes_name": true,
+            "emes_surname": true,
+            "emes_age": true,
+            "emes_typeDesigner": true,
+            "emes_typeProgrammer": true,
+            "created_at": true,
+            "updated_at": true,
+            "id_employees": true,
+            "emes_aggregate": true,
+            "emes_update": true,
+            "emes_typeEmployees": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "EMPLOYEES_EMES_TYPEDESIGNER_DESIGNER_ID_DESIGNER": true,
+            "EMPLOYEES_EMES_TYPEPROGRAMMER_PROGRAMMER_ID_PROGRAMMER": true
+        }
+    },
+    "designer": {
+        "column": {
+            "id_designer": true,
+            "deer_name": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "programmer": {
+        "column": {
+            "id_programmer": true,
+            "prer_name": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="nttdata_poke_index_list_data_source" xsi:type="string">NttData\PokeGrid\Model\ResourceModel\Pokemon\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="NttData\PokeGrid\Cron\CronPokemon">
+        <arguments>
+            <argument name="dataHelper" xsi:type="object">NttData\PokeGrid\Helper\DataHelper</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="pokeGridTest" xsi:type="object">NttData\PokeGrid\Console\Log</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="NttData\PokeGrid\Logger\Handler\Test">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+
+    <type name="NttData\PokeGrid\Logger\Test">
+        <arguments>
+            <argument name="name" xsi:type="string">PokeGridLogger</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">NttData\PokeGrid\Logger\Handler\Test</item>
+            </argument>
+        </arguments>
+    </type>
+
+
+    <virtualType name="NttData\PokeGrid\Model\ResourceModel\Pokemon\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">pokemon</argument>
+            <argument name="resourceModel" xsi:type="string">NttData\PokeGrid\Model\ResourceModel\Pokemon</argument>
+        </arguments>
+    </virtualType>
+</config>
