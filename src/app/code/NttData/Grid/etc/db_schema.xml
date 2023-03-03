@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="employees" resource="default" engine="innodb" comment="Employee business">
+        <column xsi:type="smallint" name="id_employees" padding="6" unsigned="false" nullable="false" identity="true" comment="ID" />
+        <column xsi:type="varchar" name="emes_name" nullable="false" length="25" comment="Name" />
+        <column xsi:type="varchar" name="emes_surname" nullable="false" length="25" comment="Surname" />
+        <column xsi:type="smallint" name="emes_age" nullable="false" padding="6" comment="Age employees" />
+        <column xsi:type="varchar" name="emes_typeEmployees" nullable="false" length="25" comment="Type of employees" />
+        <column xsi:type="smallint" name="emes_typeDesigner" nullable="true" padding="6" comment="Type designer employees"/>
+        <column xsi:type="smallint" name="emes_typeProgrammer" nullable="true" padding="6" comment="Type programmer employees"/>
+        <column xsi:type="timestamp" name="emes_aggregate" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+            comment="Creation Time"/>
+        <column xsi:type="timestamp" name="emes_update" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+            comment="Update Time"/>
+
+        <!-- NOTE: primary key -->
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id_employees" />
+        </constraint>
+
+        <!-- NOTE: foreing key emes_typeDesigner <-> id_designer -->
+        <constraint xsi:type="foreign" referenceId="FK_employees_designer"
+            table="employees" column="emes_typeDesigner" referenceTable="designer"
+            referenceColumn="id_designer" onDelete="CASCADE"/>
+
+        <!-- NOTE: foreing key emes_typeProgrammer <-> id_programmer -->
+        <constraint xsi:type="foreign" referenceId="FK_employees_programmer"
+            table="employees" column="emes_typeProgrammer" referenceTable="programmer"
+            referenceColumn="id_programmer" onDelete="CASCADE"/>
+    </table>
+
+    <table name="designer" resource="default" engine="innodb">
+        <column xsi:type="smallint" name="id_designer" padding="6" unsigned="false" nullable="false" identity="true" comment="ID" />
+        <column xsi:type="varchar" name="deer_name" nullable="false" length="25" comment="Name" />
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id_designer" />
+        </constraint>
+    </table>
+
+        <table name="programmer" resource="default" engine="innodb">
+        <column xsi:type="smallint" name="id_programmer" padding="6" unsigned="false" nullable="false" identity="true" comment="ID" />
+        <column xsi:type="varchar" name="prer_name" nullable="false" length="25" comment="Name" />
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id_programmer" />
+        </constraint>
+    </table>
+</schema>
